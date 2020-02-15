@@ -5,10 +5,30 @@
 {% endblock %}
 
 {% block main %}
-<h1>{{ object }}</h1>
-<p class='lead'>
-    {{ object.plot }}
+<div class="col">
+    <h1>{{ object }}</h1>
+    <p class='lead'>
+        {{ object.plot }}
+    </p>
+</div>
+<ul class="movie-image list-inline">
+    {% for i in object.movieimage_set.all %}
+      <li
+      class="list-inline-item">
+      <img src="{{ i.image.url }}" alt="">
+      </li>
+    {% endfor %}
+</ul>
+<p>
+    Directed by {{ object.director }}
 </p>
+<p>
+    Written by {{ object.writing_credits }}
+</p>
+<p>
+    Starring {{ object.acting_credits }}
+</p>
+
 {% endblock %}
 
 {% block sidebar %}
@@ -18,4 +38,28 @@
         {{ object.get_rating_display }}
     </span>
 </div>
+
+<div>
+    <h2>
+        Score: {{ object.score|default_if_none:"TBD" }}
+    </h2>
+</div>
+
+<div>
+    {% if vote_form %}
+        <form 
+        method="post"
+        action="{{ vote_form_url }}">
+            {% csrf_token %}
+            {{ vote_form.as_p }}
+            <button
+            class="btn btn-primary">
+            Vote
+            </button>
+        </form>
+    {% else %}
+        <p>Log In to vote for this movie</p>
+    {% endif %}
+</div>
+
 {% endblock %}

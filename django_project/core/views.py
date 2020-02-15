@@ -11,6 +11,7 @@ from django.contrib.auth.mixins import (
 from django.core.exceptions import (
     PermissionDenied
 )
+from . import forms
 
 # Create your views here.
 
@@ -113,6 +114,34 @@ class UpdateVote(LoginRequiredMixin, UpdateView):
 
     def render_to_response(self, context, **response_kwargs):
         movie_id = context['object'].id
+        movie_detail_url = reverse(
+            'core:MovieDetail',
+            kwargs={'pk':movie_id})
+        return redirect(
+            to=movie_detail_url
+        )  
+
+class MovieImageUpload(LoginRequiredMixin, 
+              CreateView):
+    form_class = MovieImageForm
+
+    def get_initial(self):
+        initial = super().get_initial()
+        initial['user'] = self.request.user.id
+        initial['movie'] = self.kwargs['movie_id']
+        return initial
+
+    def get_success_url(self):
+        movie_id = self.kwargs['movie_id']
+        return reverse(
+            'core:MovieDetail',
+            kwargs={
+                'pk': movie_id
+            }
+        )
+
+    def render_to_response(self, context, **response_kwargs):
+        movie_id = self.kwargs['movie_id']
         movie_detail_url = reverse(
             'core:MovieDetail',
             kwargs={'pk':movie_id})

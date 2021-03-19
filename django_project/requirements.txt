@@ -28,7 +28,7 @@ django-mailbox==4.8.1
 django-neighborhoods==2.0.1
 django-rest-knox==4.1.0
 django-social-auth==0.7.28
-djangorestframework==3.11.0
+djangorestframework==3.11.2
 docker==4.1.0
 hiredis==1.0.1
 httplib2==0.17.0

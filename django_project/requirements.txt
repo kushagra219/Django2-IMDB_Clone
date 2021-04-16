@@ -20,7 +20,7 @@ Django==2.2.10
 django-bootstrap3==12.0.3
 django-census-places==1.2.6
 django-crispy-forms==1.7.2
-django-debug-toolbar==2.2
+django-debug-toolbar==2.2.1
 django-filter==2.2.0
 django-localflavor==2.2
 django-location==2.1.1

@@ -70,7 +70,7 @@ Tree==0.2.4
 Twisted==19.10.0
 txaio==20.1.1
 typed-ast==1.4.1
-urllib3==1.25.3
+urllib3==1.26.5
 websocket-client==0.57.0
 wincertstore==0.2
 wrapt==1.11.2

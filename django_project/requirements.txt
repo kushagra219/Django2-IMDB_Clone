@@ -60,7 +60,7 @@ pypiwin32==223
 python-openid==2.2.5
 python-stdnum==1.13
 pytz==2019.3
-pywin32==227
+pywin32==301
 requests==2.22.0
 service-identity==18.1.0
 six==1.14.0
